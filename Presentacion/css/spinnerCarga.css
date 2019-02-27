@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09-ago-2018, 19:31:31
+    Author     : ALEXIS CARATAR
+*/
+
+    
+    
+#contenedor_carga{
+    background-color: rgba(250,240,245,05);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    z-index: 10000;
+}
+#spinner{
+    border: 25px solid #fff;
+    border-top-color: #00ffff;
+    border-top-style: groove;
+    height: 300px;
+    width: 300px;
+    border-radius: 100%;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0 ;
+    bottom: 0;
+    margin: auto;
+    
+    
+    -webkit-animation:  girar 1.5s  linear infinite;
+    -o-animation: girar 1.5s linear infinite;
+    animation:  girar 1.5s linear infinite;
+}
+@keyframes girar{
+    
+  from{ transform:rotate(0deg);}
+  to { transform: rotate(360deg);}
+}
+
+img.spiiner_img{
+       position: fixed;
+    margin: 19% 42%;
+}
+
+h2.titulocargando{
+     position: fixed;
+    margin: 40% 42%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27/06/2018, 04:11:36 PM
+    Author     : 119A_Jornada2
+*/
+
+
+
+
+div#menu{
+    width: 50%;
+    margin: 0% 100px;
+    background: red;
+}
+
+h2.titulos{
+    font-size: 30px;
+}
+
+.menu{
+	list-style:none;
+	padding:0px;
+	margin:0px;
+}
+.menu li{
+    margin:2px;
+    padding:2px;
+    float:left;
+}

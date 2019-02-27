@@ -1,0 +1,69 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03-oct-2018, 20:43:55
+    Author     : ALEXIS CARATAR
+*/
+  div.menuprincipal{
+      position: absolute;
+       margin: 0% 20%;
+    width: 78%;     
+  }
+#button a {
+    margin: 0% 2.2%;
+     display: inline-block;
+       
+      
+}
+ #button  a  li{
+
+ font-family: Arial;
+ font-size: 11px;
+ text-decoration:none;
+ padding: 10px;
+ 
+ }
+ 
+ 
+    .table{
+     width: 100%;    
+    }
+        h3.text-center{
+        padding: 10px;
+        font-family:font-family;
+
+    }
+    
+    #modalInformacionPlato{
+        z-index: 1000000;
+        background: rgba(0,0,0,.5);
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        display: none;
+        	
+    }
+    #contenidoModalPlato{
+        background: #fff;
+        margin: auto;
+        margin-top: 20px;
+        height: 95%;
+        font-family: team viwer;   
+    }
+    .mover{
+        margin-left: 20px;
+    }
+   
+    #cerrar{
+        position: absolute;
+       margin: 1.8% 89%;
+       font-size: 150%;
+    }
+    
+    
+    

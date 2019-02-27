@@ -1,0 +1,76 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22/01/2018, 08:54:31 PM
+    Author     : JEFRY ENRIQUEZ
+*/
+
+#cssmenu{
+background: #161819;
+height: 90px;
+}
+
+#cssmenu ul  {
+width: 99%;
+background: #161819;
+
+ 
+}
+#cssmenu ul li {   
+     background: #161819;
+    height: 50px;
+    list-style: none;
+    float: left;    
+    font-family: team viwer;
+    margin: 10px 0px;
+}
+#cssmenu ul li :hover{
+    background: #1ecccc;   
+}
+#cssmenu ul li ul{
+    width: 180px;
+    margin: -5px 0px;
+    background:#161819 ;
+}
+#cssmenu ul li ul li{
+    width: 180px;
+    margin: 10px -38px;
+    padding: 10px 0px;
+}
+#cssmenu ul li.hover,
+#cssmenu ul li:hover {
+  position: relative;
+  z-index: 599;
+  cursor: default; 
+}
+#cssmenu ul ul {
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 598;
+  width: 100%;
+}
+#cssmenu ul li:hover > ul {
+  visibility: visible;
+}
+#cssmenu a {
+  display: block;
+  line-height: 2em;
+  text-decoration: none;
+  padding: 8px;
+  margin: 0px 5px;
+  font-size: 20px;
+  color:white;
+}
+
+div.lineacolorida{
+    background:#057E94 ;
+    width: 98%;
+    padding: 4px;
+    margin: -18px 10px;
+}
+
