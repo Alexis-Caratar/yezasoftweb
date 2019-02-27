@@ -76,7 +76,7 @@ input#hide:checked ~ div#content {
     </table>
     
      <input type="radio" id="hide" name="rol" checked value="nada">Ninguno
-            <input type="radio" id="show" name="rol" value="admin">Administrador
+            <input type="radio" id="show  " name="rol" value="admin">Administrador
             <input type="radio" id="show" name="rol" value="cajero">Cajero
             <input type="radio" id="show" name="rol" value="mesero">Mesero
             <input type="radio" id="show" name="rol" value="cocina">Cocina
@@ -96,41 +96,53 @@ input#hide:checked ~ div#content {
 </div>
     </center>
 <script>
-    
+    var accion ='<?=$accion?>';
+    var identificacionM ='<?=$empleado->getIdentificacion()?>';
+    var usuarioM ='<?=$usuario->getUsuario()?>';
+   
     function validarusuario(){
         $("#mensaje1").html("");
          $("#mensaje").html("");
          
+    
        var usuario=$('#usuario').val();       
        var identificacion=$('#identificacion').val();  
-       var accion=$("#accion").html("");
-        if(accion=='Adicionar'){
-        if(usuario!=''){
-            var $cadena="select*from usuario where usuario='"+usuario+"'";
-        }
-        if(identificacion!=''){
-            var $cadena="select*from empleado where identificacion='"+identificacion+"'";
-        }
+       if(accion=='Adicionar'){
+         
+            if(usuario!=''){
+                var $cadena="select*from usuario where usuario='"+usuario+"'";
+            }
+            if(identificacion!=''){
+                var $cadena="select*from empleado where identificacion='"+identificacion+"'";
+            }
+    }else {
+    
+        if(identificacionM==identificacion){
+            var $cadena="select*from empleado where identificacion='6465456465465'";
         }else{
-            
+             var $cadena="select*from empleado where identificacion='"+identificacion+"'";            
         }
         
-        
+//        if(usuarioM==usuario){
+//            var $cadena="select*from usuario where usuario='64654984651'";
+//        }else{
+//             var $cadena="select*from usuario where usuario='"+usuario+"'";            
+//        }
      
+    }
+    
       $.ajax({
             type: 'POST',
             data: {cadena: $cadena},
             url: "consultageneral.php",
             success: function (data) {
-                if(data!=""){
+                if(data!=""){                   
                     if(usuario!=''){
                        $("#mensaje").html("Usuario existente ") 
                     }
-                    if(identificacion!=''){
+                    if(identificacion!='' ){
                       $("#mensaje1").html("identificacion existente ")  
                     }
-                    
-                    
                     $('#botton').hide(); 
                 }else{
                      $('#botton').show(); 

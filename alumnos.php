@@ -123,7 +123,7 @@ function getdatos(){
             data: {accion: "consultar",cadenaSQL: cadenaSQL},
             url: "consulta.php",
             success: function (data) {
-              dataType: 'json',
+              dataType: 'json', 
               console.log(data)
                 limpiar();
                 $('#ventanaModal').slideDown();

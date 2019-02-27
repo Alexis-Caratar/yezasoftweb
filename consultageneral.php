@@ -11,6 +11,8 @@ foreach ($_POST as $Variable=> $Valor)${$Variable}=$Valor;
 $datos=ConectorBD::ejecutarQuery($cadena, null);
   $lista="";
   if (count($datos)>0){
-      echo $lista=$datos[0][0];
+       $lista.=$datos[0][0];
+  }else{  $lista.="";
   }
+  echo $lista;
 ?>
