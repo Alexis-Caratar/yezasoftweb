@@ -96,10 +96,7 @@ $datos12= ConectorBD::ejecutarQuery($cadena, null);
         </div>
         <div class="lineacolorida"></div>
 
-        <?php include $CONTENIDO ?>
-
-
-        
+        <?php include $CONTENIDO ?>        
         <div class="tab-content"><br>
         <footer style="background-color: #057E94;color: white; font-family: arial; font-size: 30px; "><br>
             
@@ -119,6 +116,7 @@ $datos12= ConectorBD::ejecutarQuery($cadena, null);
             <br><br>
             <h2>REDES SOCALES</h2>
             <li>
+                <a href="https://www.facebook.com/"><span class="icon-facebook2"></span></a>
                 <a href="https://www.facebook.com/"><span class="icon-facebook2"></span></a>
                 <a href="https://www.facebook.com/"><span class="icon-twitter"></span></a>
                 <a href="https://www.facebook.com/"><span class="icon-youtube2"></span></a>
