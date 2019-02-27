@@ -9,6 +9,8 @@ require_once dirname(__FILE__) . '/../Clases/Reservas.php';
 require_once dirname(__FILE__) . '/../Clases/Evento.php';
 
 
+print_r($_SESSION['identificacion']);
+
 $filtro = null;
 $AFecha = '';
 $VFechaInicio = '';
@@ -65,11 +67,7 @@ if ($_SESSION['rol']=='cajero') {
     $datos1= ConectorBD::ejecutarQuery($cadena, null);
     $filtro=" caja={$datos1[0][0]}";
 }
-
-
-
-
-$datos = Reservas::getDatosEnObjetos($filtro, 'idreserva');
+$datos = Reservas::getDatosEnObjetos($filtro, 'fechasistema desc');
 
 $mensaje = " ";
 $lista = '';
@@ -85,7 +83,7 @@ for ($i = 0; $i < count($datos); $i++) {
     $cut = count($datos);
     $cliente = $datos[$i];    
     $item = $i + 1;
-    $cadenaSQL="select evento from reserva where idreserva={$cliente->getIdreserva()}";
+    $cadenaSQL="select evento from reserva where idreserva={$cliente->getIdreserva()} ";
     $evento= ConectorBD::ejecutarQuery($cadenaSQL, null)[0][0];
     if($evento!=null){
         $cadenaSQL="select nombre from evento where idevento={$evento}";

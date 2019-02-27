@@ -341,7 +341,8 @@ class Reservas {
       public static function  getDatos($filtro, $orden){
           $filtro2="and $filtro";
           if($filtro==NULL) $filtro2=" ";
-          $cadenaSQL="select idreserva,fechareserva,hora,evento,fechasistema,numeropersona,observacion,abono,sum(vrunitario*cantidad)as total,identificacioncliente,piso,identificacion,nombres,apellidos,direccion,barrio,telefono,email,clave from reserva,cliente,detalleorden,comanda where identificacion=identificacioncliente and comanda.reserva=reserva.idreserva $filtro2 group by idreserva,identificacion";          if($orden!=NULL) $cadenaSQL.=" order by $orden";
+          $cadenaSQL="select idreserva,fechareserva,hora,evento,fechasistema,numeropersona,observacion,abono,sum(vrunitario*cantidad)as total,identificacioncliente,piso,identificacion,nombres,apellidos,direccion,barrio,telefono,email,clave from reserva,cliente,detalleorden,comanda where identificacion=identificacioncliente and comanda.reserva=reserva.idreserva $filtro2 group by idreserva,identificacion";       
+          if($orden!=NULL) $cadenaSQL.=" order by $orden";
           return ConectorBD::ejecutarQuery($cadenaSQL, null);
       }
       public static function getDatosEnObjetos($filtro, $orden){

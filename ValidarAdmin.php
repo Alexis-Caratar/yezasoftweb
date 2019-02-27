@@ -16,7 +16,8 @@ $clave=$_POST['clave'];
 if (Usuario::validar($usuario, $clave)) {
     $usuariosd=new Usuario('usuario', "'$usuario'");  
     session_start();    
-    $_SESSION['user']=$usuariosd->getId();
+      $_SESSION['identificacion']=$usuariosd->getUsuarioidentificacion()->getIdentificacion();
+   // $_SESSION['user']=$usuariosd->getId();
     $_SESSION['rol']=$usuariosd->getUsuario();
     $_SESSION['accion']='Abrir';
    header("Location: PrincipalAdmin.php?CONTENIDOADMIN=inicioAdmin.php");

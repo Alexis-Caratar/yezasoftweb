@@ -30,18 +30,18 @@ $idplato= ConectorBD::ejecutarQuery($cadenaSQL, null)[0][0];
 $cadenaSQL="select nit from empresa";
 $nitempresa= ConectorBD::ejecutarQuery($cadenaSQL, null)[0][0];
 $usuario = $_SESSION['user'];
+print_r($usuario);
 //****
 //Falta atributos atributos en la clase.
 //****
 
 switch ($accion) {
 	case 'Adicionar':
-            
             $cliente=new Cliente(null,null);
             $cadenaSQL="select identificacion from cliente where identificacion={$identificacioncliente}";
             $idddd= ConectorBD::ejecutarQuery($cadenaSQL, null)[0][0];
             
-            if(isset($idddd)){
+            if(count($idddd)>0){
                 $si=new Reservas(null,null);
 		  $si->setIdevento($idevento);
 		  $si->setIdplato($idplato);
@@ -347,5 +347,5 @@ switch ($accion) {
 //header("Location: principalAdmin.php?CONTENIDOADMIN=ReservasAdmin/Reservas.php");
 ?>
 <script type="text/javascript">
-  location = 'PrincipalAdmin.php?CONTENIDOADMIN=ReservasAdmin/Reservas.php';
+  //location = 'PrincipalAdmin.php?CONTENIDOADMIN=ReservasAdmin/Reservas.php';
     </script>

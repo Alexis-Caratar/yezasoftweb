@@ -117,7 +117,6 @@ $datos12= ConectorBD::ejecutarQuery($cadena, null);
             <h2>REDES SOCALES</h2>
             <li>
                 <a href="https://www.facebook.com/"><span class="icon-facebook2"></span></a>
-                <a href="https://www.facebook.com/"><span class="icon-facebook2"></span></a>
                 <a href="https://www.facebook.com/"><span class="icon-twitter"></span></a>
                 <a href="https://www.facebook.com/"><span class="icon-youtube2"></span></a>
                 <a href="https://www.facebook.com/"><span class="icon-envelop"></span></a>                
