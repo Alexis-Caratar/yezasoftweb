@@ -196,6 +196,7 @@ $iden=$cliente->getIdentificacion();
         </form>
         <?=$mensaje?>
 	</center>
+   
 </article>
 
 
@@ -210,7 +211,7 @@ $iden=$cliente->getIdentificacion();
                                 <tr><th>Barrio</th><th><input type="text" style='width: 60%' name="barrio" class="input-group-text" value='<?= $reserva->getBarrio() ?>' required></th></tr> 
 				<tr><th>Fecha Reserva (*) </th><th><input type="date"  style='width: 60%' class="input-group-text" name="fechareserva" value="<?= $reserva->getFechareserva() ?>" required placeholder="ingrese una descripcion" required/></th></tr>
                                 <tr><th>Hora (*) </th><th><input type="time" name="hora" style='width: 60%' class="input-group-text" value="<?= $reserva->getHora() ?>" required="" size="2"/>
-                                <tr><th>Personas (*) </th><th><input type="number" name="numeropersonas" style='width: 60%' class="input-group-text" value="<?= $reserva->getNumeropersonas() ?> " required placeholder="N° Personas" ></th></tr>
+                                <tr><th>Personas (*) </th><th><input type="number" name="numeropersonas" style='width: 60%' class="input-group-text" value="<?= $reserva->getNumeropersonas() ?>" required placeholder="N° Personas" ></th></tr>
 				<tr><th>Abono</th><th><input type="number" name="abono" class="input-group-text" style='width: 60%'value="<?= $reserva->getAbono() ?>"placeholder="$$$$" ></th></tr>
                                 <tr><th>observacion</th><th><textarea class="input-group-text" placeholder="Ingrese Su Observacion Aqui" name="observacion" cols="40" rows="4"><?= $reserva->getObservacion() ?></textarea>
 				<tr><th>Piso</th><th><input type="text" name="piso" class="input-group-text" style='width: 60%' value="<?= $reserva->getPiso() ?>" required/></th></tr>

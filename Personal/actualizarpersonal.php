@@ -35,7 +35,12 @@ switch ($accion){
         $empleado->setFechafin($fechafin);
         $empleado->setCargo($cargo);
         $empleado->grabar();
-        //header('location:PrincipalAdmin.php?CONTENIDOADMIN=Personal/personal.php'); 
+        //header('location:PrincipalAdmin.php?CONTENIDOADMIN=Personal/personal.php');
+        if ($rol!='nada') {
+            $cadenasql="insert into usuario (usuario,clave,empleado,rol)values('{$usuario}','{$clave}','{$identificacion}','{$rol}')";
+            ConectorBD::ejecutarQuery($cadenasql, null);
+            print_r($cadenasql);
+        }
         }
          break;
     case 'Modificar':

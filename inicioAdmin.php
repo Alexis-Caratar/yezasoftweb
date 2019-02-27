@@ -7,6 +7,7 @@
  */
 
 $sesiones=$_SESSION['rol'];
+$user=$_SESSION['user'];
 if ($sesiones=="cocina") {
     header("location:PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php&salir");   
 }
@@ -16,7 +17,7 @@ if ($sesiones=="cocina") {
     <h2 class="text-center " style="font-weight: bolder;font-size: 50px;">SISTEMA DE INFORMACION  PARA RESTAURANTE </h2>
 <br>
   <img  class="imgprincipal" src="Presentacion/imagenes/modal0000.jpg" width="1200" height="550">
-                 
+                 <?=$user?>
 </div>
 
 

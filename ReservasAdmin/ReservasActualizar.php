@@ -29,8 +29,8 @@ $cadenaSQL="select idplato from plato limit 1";
 $idplato= ConectorBD::ejecutarQuery($cadenaSQL, null)[0][0];
 $cadenaSQL="select nit from empresa";
 $nitempresa= ConectorBD::ejecutarQuery($cadenaSQL, null)[0][0];
-$usuario = $_SESSION['user'];
-print_r($usuario);
+
+if ($usuario==null){$usuario='00000';}else{$usuario=$_SESSION['user'];}
 //****
 //Falta atributos atributos en la clase.
 //****

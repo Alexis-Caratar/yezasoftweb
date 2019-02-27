@@ -31,6 +31,7 @@ class Empleado {
             if (is_array($campo)) $this->cargarObjetoEnVector ($campo);//pregunta es arreglo por verdadero llama al cargar vector
             else {//por falso carga una consulta en la base de datos
                 $cadenaSQL="select identificacion, nombres, apellidos, genero, telefono, fechanacimiento,email,fechaingreso, fechafin, cargo from empleado where $campo=$valor";
+                print_r($cadenaSQL);
                 $resultado= ConectorBD::ejecutarQuery($cadenaSQL, null);//llega como nulo por que estmos con la base de datos admin
                 if(count($resultado)>0) $this->cargarObjetoEnVector ($resultado[0]);//debuelve el primero 
                 //conut cuenta cuantas filas tiene el elemento
@@ -140,7 +141,6 @@ class Empleado {
 public function grabar(){
        $cadenaSQL="insert into empleado(identificacion, nombres, apellidos, genero, telefono, fechanacimiento,email, fechaingreso, fechafin,cargo) values"
                . "('{$this->identificacion}','{$this->nombres}','{$this->apellidos}','{$this->genero}','{$this->telefono}','{$this->fechanacimiento}','{$this->email}','$this->fechaingreso','$this->fechafin','$this->cargo')";
-       print_r($cadenaSQL);
                ConectorBD::ejecutarQuery($cadenaSQL, null);
         
     }
@@ -174,6 +174,7 @@ public function grabar(){
     $cadenaSQL="SELECT *FROM cargo";
      $datoscargo= ConectorBD::ejecutarQuery($cadenaSQL,null);
      $listacargo='';
+     $listacargo='<option>Seleccione..</option>';
             for ($i = 0; $i < count($datoscargo); $i++) {
                 if ($preterminado==$datoscargo[$i]['idcargo'])    $auxiliar= 'selected';
                 else    $auxiliar='';

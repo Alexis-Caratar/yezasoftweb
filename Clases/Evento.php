@@ -110,7 +110,7 @@ class Evento {
       
       public static function getListaEnOptions($predeterminado){
         $sistemas= Evento::getDatosEnObjetos(null, 'nombre');
-        $lista="<option value='' name='' >Escojer Un Evento</option>";
+        $lista="<option  >Escojer Un Evento</option>";
         for ($i = 0; $i < count($sistemas); $i++) {
             $si=$sistemas[$i];
             if($predeterminado==$si->getIdEvento()) $auxiliar='selected';

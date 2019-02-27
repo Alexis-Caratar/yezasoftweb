@@ -17,6 +17,7 @@ class Usuario {
     private $id;
     private $usuario;
     private $clave;
+    private $rol;
     
     function __construct($campo, $valor) {
     
@@ -37,15 +38,22 @@ class Usuario {
      $this->usuario=$vector[0];
     $this->clave=$vector[1];
     $this->id=$vector[2];
+    $this->rol=$vector[3];
     }
-    
+    function getRol() {
+        return $this->rol;
+    }
+
+    function setRol($rol) {
+        $this->rol = $rol;
+    }
+
+        
     
     function getUsuario() {
         return $this->usuario;
     }
-    function getUsuarioidentificacion() {
-        return new Empleado('identificacion', $this->id);
-    }
+   
     function getClave() {
         return $this->clave;
     }

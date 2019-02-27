@@ -111,7 +111,7 @@ class Comanda {
           $cadenaSQL="select max(idcaja) from caja";
         $caja=ConectorBD::ejecutarQuery($cadenaSQL, null);
         
-        $cadenaSQL="insert into comanda (idempleado,fecha,estado,reserva,factura,caja) values($usuario,current_timestamp,'P',$this->reserva,$this->factura,{$caja[0][0]})";
+        $cadenaSQL="insert into comanda (idempleado,fecha,estado,reserva,factura,caja) values('$usuario',current_timestamp,'P',$this->reserva,$this->factura,{$caja[0][0]})";
         ConectorBD::ejecutarQuery($cadenaSQL, null);
     }
     

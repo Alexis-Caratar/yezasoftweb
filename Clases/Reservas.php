@@ -137,7 +137,7 @@ class Reservas {
       }
 
       function getNumeropersonas() {
-          return $this->numeropersonas;
+          return  $this->numeropersonas;
       }
 
       function getAbono() {
@@ -293,7 +293,7 @@ class Reservas {
              $eventob=$this->idevento.",";
          }
         
-        $cadenaSQL="insert into reserva (fechareserva,hora,fechasistema, numeropersona, direccion,barrio, abono, observacion,identificacioncliente, piso)values ( '{$this->fechareserva}', '{$this->hora}', current_timestamp,{$this->numeropersonas}, '{$this->direccion}', '{$this->barrio}',{$this->abono}, '{$this->observacion}', '{$this->identificacioCliente}', '{$this->piso}')";
+        $cadenaSQL="insert into reserva ({$eventoa}fechareserva,hora,fechasistema, numeropersona, direccion,barrio, abono, observacion,identificacioncliente, piso)values ({$eventob}'{$this->fechareserva}', '{$this->hora}', current_timestamp,{$this->numeropersonas}, '{$this->direccion}', '{$this->barrio}',{$this->abono}, '{$this->observacion}', '{$this->identificacioCliente}', '{$this->piso}')";
          ConectorBD::ejecutarQuery($cadenaSQL, null);  
       }
     function  grabarWeb(){
