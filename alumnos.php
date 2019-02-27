@@ -122,9 +122,9 @@ function getdatos(){
             type: 'POST',
             data: {accion: "consultar",cadenaSQL: cadenaSQL},
             url: "consulta.php",
-            dataType: 'json',
             success: function (data) {
-                console.log(data)
+              dataType: 'json',
+              console.log(data)
                 limpiar();
                 $('#ventanaModal').slideDown();
                 $('#codigo').val(data[0].codigo);

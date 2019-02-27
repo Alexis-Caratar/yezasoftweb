@@ -73,86 +73,61 @@ if (count($datos1)>0){
 //para el modficicar o adicionar
 if ($accion=='Modificar') $pago=new Pagoempleado('idpagoempleado', $idpagoempleado);
 else $pago=new Pagoempleado(null, null);
-
-
-
 ?> 
-<div class="container">
+<div class="container-fluid">
     <h1 class="text-center text-info">REGISTRAR PAGO</h1>
+    <H4>Fecha del PAGO: <?= $pago->getFechasistema() ?></H4>
     <br>
-<div class="container row"><br>
-    <div class="col-lg-4">
-    <div class="table table-hover table-striped " >
-        <h4 >DATOS DEL EMPLEADO</h4>
-<table>
-    <tr><th>Identificacion</th><td><?= $idempleado ?></td></tr>
-    <tr><th>Nombre Completo</th><td><?= $nombres ?> <?= $apellidos ?> </td></tr>
-    <tr><th>Telfono</th><td><?= $telefono ?></td></tr>
-    <tr><th>Email</th><td><?= $email ?></td></tr>
-    <tr><th>SUELDO BASE</th><td ><?= $datos[0][0] ?></td></tr>
-</table>
+        <div class="row"><br>
+            <div class="col-lg-4">
+                        <div class="table table-hover table-striped " >
+                            <h4 >DATOS DEL EMPLEADO</h4>
+                                <table>
+                                    <tr><th>Identificacion</th><td><?= $idempleado ?></td></tr>
+                                    <tr><th>Nombre Completo</th><td><?= $nombres ?> <?= $apellidos ?> </td></tr>
+                                    <tr><th>SUELDO BASE</th><td ><?= $datos[0][0] ?></td></tr>
+                                </table>
+                        </div>
+                         <div class="">
+                        <h3>LISTA DE ADELANTOS<a href="PrincipalAdmin.php?CONTENIDOADMIN=Personal/Adelanto/adelanto.php&identificacion=<?=$idempleado?>&nombres=<?=$nombres?>&apellidos=<?=$apellidos?>&telefono=<?=$telefono?>&email=<?=$email?>" class=" btn btn-danger" >Adelantos</a></h3>
+                           <table class="table table-hover table-striped">
+                                <tr><td>NUMERO</td><td>MONTO</td><td>FECHA</td><td>ESTADO</td></tr>
+                                     <?= $listaadelantos?>
+                           </table>
+                    </div><br><br>
+                    <div>
+                            <h3>LISTA DE PRESTAMO<a href="PrincipalAdmin.php?CONTENIDOADMIN=Personal/Prestamo/prestamo.php&identificacion=<?=$idempleado?>&nombres=<?=$nombres?>&apellidos=<?=$apellidos?>&telefono=<?=$telefono?>&email=<?=$email?>" class=" btn btn-danger" >PRESTAMOS</a></h3>
+                           <table class="table table-hover table-striped">
+                               <tr><td>NUMERO</td><td>FECHA</td><td>VALOR PRESTAMO</td><td>INTERES</td><td>CUOTA</td><td>Valor abonado</td><td>ESTADO</td></tr>
+                              <?= $listaprestamos?>
+                           </table>
+                    </div>
+
+
+             </div>
+             <div class="offset-2 col-lg-6">
+                    <form name="formulario" action="PrincipalAdmin.php?CONTENIDOADMIN=Personal/Pago/actualizarpago.php&idpagoempleado=<?= $pago->getIdpagoempleado() ?>&fechasistema=<?= $pago->getFechasistema() ?>" method="post" >
+
+                            <h2 class="text-center"><?= strtoupper($accion) ?> PAGO</h2>
+                              <table class="table table-hover" >
+                                    <tr> <th>Valor hora extra</th><th><input class="form-control"  onchange="cargar()" id='valorhora'   type="number" placeholder="ingrese el valor" name="valorhoraextra" value="<?= $pago->getValorhoraextra() ?>" autofocus required> </th> </tr>
+                                    <tr><th>Horas Extras</th><th><input class="form-control"   onchange="cargar()" id='horasextras'   type="number" placeholder="ingrese el valor" name="horasextras" value="<?= $pago->getHorasextras() ?>"  required> </th>
+                                    <tr><th>Auxilio de Transporte</th><th><input class="form-control" onchange="cargar()" id="auxiliotrasporte" type="number" placeholder="ingrese el valor" name="auxiliotrasporte" value="<?= $pago->getAuxiliotrasporte() ?>"  required> </th></tr>
+                                    <tr><th>Descuento Salud</th><th><input class="form-control" onchange="cargar()" id="descuentosalud"  type="number" placeholder="ingrese el valor" name="descuentosalud" value="<?= $pago->getDescuentosalud() ?>" required> </th></tr>
+                                    <tr><th>Descuento pencion</th><th><input class="form-control" onchange="cargar()"  id="descuentopencion" type="number" placeholder="ingrese el valor" name="descuentopencion" value="<?= $pago->getDescuentopencion() ?>" required> </th></tr>
+                                    <tr><th>Riesgo labora</th><th><input class="form-control" onchange="cargar()"  id="riegolaboral" type="number" placeholder="ingrese el valor" name="riesgolaboral" value="<?= $pago->getRiesgolaboral() ?>" required> </th></tr>
+                                    <tr><th>Fecha inicio</th><th><input class="form-control" type="date" placeholder="ingrese el valor" name="fechainicio" value="<?= $pago->getFechainicio() ?>" autofocus required> </th></tr>
+                                    <tr><th>Fecha fin</th><th><input  class="form-control" type="date" placeholder="ingrese el valor" name="fechafin" value="<?= $pago->getFechafin() ?>" autofocus required> </th></tr>
+                                    <tr><th>TOTAL A PAGAR</th><th> <h2 id='pagar' ><?= $datos[0][0] ?></h2></th></tr>
+                             </table>
+                              <input type="hidden" id="sueldo" name="sueldo" value="<?= $datos[0][0] ?>">
+                              <input type="hidden"  name="idpagoempleado" value="<?= $pago->getIdpagoempleado() ?>">
+                              <input type="hidden"  name="idempleado" value="<?= $idempleado ?>">
+                              <input class=" btn btn-primary" type="submit" name="accion" value="<?= $accion ?>"> 
+                    </form>
+             </div>
         </div>
-
-
-        </div>
- <div class="col-lg-8">
-     <div class="">
-     <h3>LISTA DE ADELANTOS<a href="PrincipalAdmin.php?CONTENIDOADMIN=Personal/Adelanto/adelanto.php&identificacion=<?=$idempleado?>&nombres=<?=$nombres?>&apellidos=<?=$apellidos?>&telefono=<?=$telefono?>&email=<?=$email?>" class=" btn btn-danger" >Adelantos</a></h3>
-        <table class="table table-hover table-striped">
-            <tr><td>NUMERO</td><td>MONTO</td><td>FECHA</td><td>ESTADO</td></tr>
-        <?= $listaadelantos?>
-        </table>
-     </div><br><br>
-     <div>
-         <h3>LISTA DE PRESTAMO<a href="PrincipalAdmin.php?CONTENIDOADMIN=Personal/Prestamo/prestamo.php&identificacion=<?=$idempleado?>&nombres=<?=$nombres?>&apellidos=<?=$apellidos?>&telefono=<?=$telefono?>&email=<?=$email?>" class=" btn btn-danger" >PRESTAMOS</a></h3>
-        <table class="table table-hover table-striped">
-            <tr><td>NUMERO</td><td>FECHA</td><td>VALOR PRESTAMO</td><td>INTERES</td><td>CUOTA</td><td>Valor abonado</td><td>ESTADO</td></tr>
-        <?= $listaprestamos?>
-        </table>
-     </div>
-     </div>
-    
-
-</div>
-    
-    
-    <div class="container col-lg-8">
-    <br><br><br>
-<H4>Fecha del PAGO: <?= $pago->getFechasistema() ?></H4>
-<br>
-<center>
-    <form name="formulario" action="PrincipalAdmin.php?CONTENIDOADMIN=Personal/Pago/actualizarpago.php&idpagoempleado=<?= $pago->getIdpagoempleado() ?>&fechasistema=<?= $pago->getFechasistema() ?>" method="post" >
-        
-      <h2 class="text-center"><?= strtoupper($accion) ?> PAGO</h2>
-        <table class="table table-hover" >
-    
-    <tr>
-        <th>Valor hora extra</th><th><input class="form-control"  onchange="cargar()" id='valorhora'   type="number" placeholder="ingrese el valor" name="valorhoraextra" value="<?= $pago->getValorhoraextra() ?>" autofocus required> </th>
-    </tr>
-    <tr><th>Horas Extras</th><th><input class="form-control"   onchange="cargar()" id='horasextras'   type="number" placeholder="ingrese el valor" name="horasextras" value="<?= $pago->getHorasextras() ?>"  required> </th>
-    
-    <tr><th>Auxilio de Transporte</th><th><input class="form-control" onchange="cargar()" id="auxiliotrasporte" type="number" placeholder="ingrese el valor" name="auxiliotrasporte" value="<?= $pago->getAuxiliotrasporte() ?>"  required> </th></tr>
-    <tr><th>Descuento Salud</th><th><input class="form-control" onchange="cargar()" id="descuentosalud"  type="number" placeholder="ingrese el valor" name="descuentosalud" value="<?= $pago->getDescuentosalud() ?>" required> </th></tr>
-    <tr><th>Descuento pencion</th><th><input class="form-control" onchange="cargar()"  id="descuentopencion" type="number" placeholder="ingrese el valor" name="descuentopencion" value="<?= $pago->getDescuentopencion() ?>" required> </th></tr>
-    <tr><th>Riesgo labora</th><th><input class="form-control" onchange="cargar()"  id="riegolaboral" type="number" placeholder="ingrese el valor" name="riesgolaboral" value="<?= $pago->getRiesgolaboral() ?>" required> </th></tr>
-    <tr><th>Fecha inicio</th><th><input class="form-control" type="date" placeholder="ingrese el valor" name="fechainicio" value="<?= $pago->getFechainicio() ?>" autofocus required> </th></tr>
-    <tr><th>Fecha fin</th><th><input  class="form-control" type="date" placeholder="ingrese el valor" name="fechafin" value="<?= $pago->getFechafin() ?>" autofocus required> </th></tr>
-    
-    
-    
-    <tr><th>TOTAL A PAGAR</th><th> <h2 id='pagar' ><?= $datos[0][0] ?></h2></th></tr>
-    
-    </table>
-        <input type="hidden" id="sueldo" name="sueldo" value="<?= $datos[0][0] ?>">
-        
-        <input type="hidden"  name="idpagoempleado" value="<?= $pago->getIdpagoempleado() ?>">
-        <input type="hidden"  name="idempleado" value="<?= $idempleado ?>">
-        <input class=" btn btn-primary" type="submit" name="accion" value="<?= $accion ?>"> 
-    </form>
-
-</center>
-    </div>
-    </div>
+ </div>
 
 
  

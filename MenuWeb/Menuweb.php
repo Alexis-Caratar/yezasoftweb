@@ -9,8 +9,8 @@
 require_once dirname(__FILE__).'/../Clases/ConectorBD.php';
 
 $lista='';
-$listaplatos='';
 $ventanaModal='';
+$menunuevo="";
 $cadenaSQL="select*from menu";
 $resultado= ConectorBD::ejecutarQuery($cadenaSQL, null);
 
@@ -22,91 +22,103 @@ if (count($resultado)>0) {
         $lista.="</tr>";   
     }
             $cadenaSQL="select*from plato where tipo='P'  ";
-    $resultadoplatos= ConectorBD::ejecutarQuery($cadenaSQL,null);       
+    $resultadoplatos= ConectorBD::ejecutarQuery($cadenaSQL,null);
+    $menunuevo.=' <div class="container">
+                                <div class="row">
+                                    <div class="col-12 menu-heading">
+                                        <div class="section-heading text-center">
+                                            <a href="index.php?CONTENIDO=MenuWeb/Menuweb.php">  <h2>Menu</h2></a>
+                                        </div>
+                                               </div>
+                                </div>
+                                <div class="row">
+                                  
+                               ';
+    
           if (count($resultadoplatos)>0){
         for ($i = 0; $i < count($resultadoplatos); $i++) {
-            
-            $listaplatos.="<a style='cursor:pointer;' onclick='modal(".'"'."{$resultadoplatos[$i]['idplato']}".'"'.")''>";
-            $listaplatos.= "<h2><font face='Arialblack' size='6'>{$resultadoplatos[$i]['nombre']}</font></h2>";
-            $listaplatos.= "<li><img  class='img-contenedor' style='border-radius:5000%;' src='{$resultadoplatos[$i]['foto']}' ></li> ";
-            $listaplatos.= "<h4>  $ {$resultadoplatos[$i]['valor']}</h4><br>";      
-            $listaplatos.="</a>"; 
-        }  
+             $menunuevo.=' <div class="col-12 col-sm-6 col-md-4">';
+             $menunuevo.="<a style='cursor:pointer;' onclick='modal(".'"'."{$resultadoplatos[$i]['idplato']}".'"'.")''>";
+            $menunuevo.='<div class="caviar-single-dish wow fadeInUp" data-wow-delay="0.5s">';
+             $menunuevo.='<img src="'.$resultadoplatos[$i]['foto'].'" alt="">
+                        <div class="dish-info">
+                            <h6 class="dish-name">'.$resultadoplatos[$i]['nombre'].'</h6>
+                            <p class="dish-price">$'.number_format($resultadoplatos[$i]['valor']).'</p>';
+            $menunuevo.= '</div>';
+             $menunuevo.='</a>
+                    </div>
+                </div>'; 
+        }
+        $menunuevo.=' </div>
+                            </div>';
         }
     }
 
 ?>
-<style type="text/css">
-  .img-contenedor  {
-    -webkit-transition:all .9s ease; /* Safari y Chrome */
-    -moz-transition:all .9s ease; /* Firefox */
-    -o-transition:all .9s ease; /* IE 9 */
-    -ms-transition:all .9s ease; /* Opera */
-    width:100%;
-}
-
-.img-contenedor:hover  {
-    -webkit-transform:scale(1.25);
-    -moz-transform:scale(1.25);
-    -ms-transform:scale(1.25);
-    -o-transform:scale(1.25);
-    transform:scale(1.25);
-}
-
-.img-contenedor,.img-contenedor2,.img-contenedor3 {/*Ancho y altura son modificables al requerimiento de cada uno*/
-    width:250;
-    height:250;
-    overflow:hidden;
-}
-ul{
-       list-style:none;
-       }
-
-       .offset-3{
-           margin: -50% 0%;
-           
-       }
+<style>
+    #modalInformacionPlato{
+        z-index: 1000000;
+        background: rgba(0,0,0,.5);
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        display: none;
+        	
+    }
+    #contenidoModalPlato{
+        background: #fff;
+        margin: auto;
+        margin-top: 20px;
+        height: 95%;
+        font-family: team viwer;   
+    }
+    .mover{
+        margin-left: 20px;
+    }
+   
+    #cerrar{
+        position: absolute;
+       margin: 1.8% 89%;
+       font-size: 150%;
+    }
+    
+    
+    
 </style>
-<link rel="stylesheet" type="text/css" href="Presentacion/css/menu.css">  
-<br><br>
-<div class="">
+<link href="Presentacion/css/cj/responsive.css" rel="stylesheet" type="text/css"/>
+<link href="Presentacion/css/cj/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="Presentacion/css/cj/style.css" rel="stylesheet" type="text/css"/>
 
-    <h2  class="text-center " style="font-weight: bold; font-size: 50px;">MENU  </h2><br>
-<div class="row container-fluid  ">
+
+<br>
+<div class="container-fluid">
+   
+    <div class="row   ">
          <div class="col-md-2 form-control  "  >
-             
                 <table class=" table  ">
                     <thead class="table-dark" >
-                      
                         <td><a href="index.php?CONTENIDO=MenuWeb/Menuweb.php"> Menu</a></td> 
-                        </thead>
-             
-                
-                        <?=$lista?>
+                    </thead>
+                         <?=$lista?>
                 </table>
         </div>
-    <div class="col-md-10">
-       
-             <ul id="button">
-        <div class=" container ">
-        <?= $listaplatos?>
-            </div
-     </ul>
-        
-    </div>
-      
- 
-    <div class="col_md-2">
-     
-  
-    
-    </div>
+        <div class="col-md-10">
+           
+            
+            <section class="caviar-dish-menu" id="menu" >
+                  <?=$menunuevo?>
+                     </section>
+        </div>
     </div>
 </div>
 
 
-<div  id="modalInformacionPlato">
 
+    </label> </div>
+
+<div  id="modalInformacionPlato">
     <a href="index.php?CONTENIDO=MenuWeb/Menuweb.php"><button class=" btn btn-primary" id="cerrar"> x</button></a>
     
     <div id="contenidoModalPlato" class="container">
@@ -121,11 +133,11 @@ ul{
             </div>
     </div>
 </div>
-
-
-
-
-
+<script src="../Presentacion/css/cj/active.js" type="text/javascript"></script>
+<script src="../Presentacion/css/cj/bootstrap.min.js" type="text/javascript"></script>
+<script src="../Presentacion/css/cj/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="../Presentacion/css/cj/plugins.js" type="text/javascript"></script>
+<script src="../Presentacion/css/cj/popper.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     
 function cargarDatos(id){
@@ -136,21 +148,27 @@ function cargarDatos(id){
             url: "MenuWeb/buscador.php",
             data: {cadenaSQL: cadenaSQL},
             success: function (data) {
-                      var lista=""
-                                  
+                      var lista="";
+                      lista+="<div class='container'><div class='row'>  <div class='col-12 menu-heading'><div class='section-heading text-center'>       <a href='index.php?CONTENIDO=MenuWeb/Menuweb.php'>  <h2>Menu</h2></a></div></div> </div><div class='row'>";
                          if(data.length>0){
-                        for(var i=0; i<data.length; i++){
-                            lista+="<a  style='cursor:pointer;'  onclick='modal("+'"'+data[i].idplato+'"'+") ' > ";
-                          lista+= "<h2>"+data[i].nombre+"</h2>";
-                          lista+= "<li><img style='border-radius:5000%;' src='"+data[i].foto+"'  width='250' height='250' ></li> ";
-                          lista+= "<h4>  $ "+data[i].valor+"</h4><br>";      
-                          lista+="</a>"; 
-                            
+                        for(var i=0; i<data.length; i++){  
+                            lista+="<div class='col-12 col-sm-6 col-md-4'>";
+                            lista+="<a style='cursor:pointer;' onclick='modal("+'"'+data[i].idplato+'"'+") ' > ";
+                            lista+="<div class='caviar-single-dish wow fadeInUp' data-wow-delay='0.5s'>";
+                            lista+="<img src='"+data[i].foto+"' alt=''>";
+                            lista+="<div class='dish-info'>";
+                            lista+="<h6 class='dish-name'>"+data[i].nombre+"</h6>";
+                            lista+="<p class='dish-price'>$" +data[i].valor+  "</p>";
+                            lista+= "</div>";
+                            lista+="</a>";
+                            lista+= "</div>";
+                            lista+= "</div>";
+                            lista+= "</div>";
+                              
                         }}
                         else
                         lista+="<tr><th>No hay platos en este menu</th></tr>"
-                        $('#button').html(lista)
-                
+                        $('#menu').html(lista)
                     },error: function (data) {
                         alert("data");
                         
@@ -174,7 +192,6 @@ function modal(id){
                   $("#detalle").html(data[0].descripcion)
                   $("#tiempoPreparacion").html(data[0].tiempopreparacion+" Minutos")
                   $("#valor").html(data[0].valor)
-              
                 },error: function (data) {
                     alert("data");
                 }

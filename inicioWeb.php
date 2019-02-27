@@ -83,206 +83,82 @@ $lista.="<a href='index.php?CONTENIDO=MenuWeb/Menuweb.php' class='alert-warnnig'
 		opacity: 1;
 	}
 }
-
-img.imgprincipal{
-    
-}
-
-h2.btn-primary{
-    font-size: 50px;
-}
-
-/*SLINDER */
-
-* {
-  box-sizing: border-box;
-}
-
-img.img {
-  vertical-align: middle;
-
-}
-
-/* Position the image container (needed to position the left and right arrows) */
-.container {
-  position: relative;
-  height: 20%;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-  
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-
-  width: auto;
-  padding: 26px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-   background: rgba(0,0,0,1);
-   
-}
-
-/* Position the "next button" to the right */
-.next {
-   
- 
-  right: 0;
-  border-radius: 3px 0 0 3px;
-  
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-    
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
-}
-
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
-}
-
-.active,
-.demo:hover {
-  opacity: 1;
-}
-
-
-
-
 </style>
-<div class="container-fluid">
 
+<script src="boostrap/bootrapmin.js" type="text/javascript"></script>
+<script src="boostrap/min.js" type="text/javascript"></script>
 
-<div class="container-fluid "style="margin: 2% -10%;">
-
-<input type="checkbox" id="cerrar">
-<label for="cerrar" id="btn-cerrar" class=" btn btn-primary">X</label>
-            <div class="modal">
-                <div class="contenido"><br>
-                    <h2 class="text-center text-info" style="font-size: 50px;font-weight:bolder" >BIENVENIDOS </h2>
-                    <img  class="imgprincipal" src="Presentacion/imagenes/modal0000.jpg" width="1000" height="550">
-                  
-                </div>
-            </div>
-            
-
-            
-
-<div class="container">
-  <div class="mySlides">
-    <div class="numbertext">1 / 6</div>
-    <img  src="Presentacion/imagenes/slinder5.png" style="width:122%;height: 480%; "  >
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">2 / 6</div>
-    <img src="Presentacion/imagenes/slinder1.png"  style="width:122%;height: 480%" >
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">3 / 6</div>
-    <img src="Presentacion/imagenes/slinder2.png" style="width:122%;height: 480%"  >
-  </div>
-    
-  <div class="mySlides">
-    <div class="numbertext">4 / 6</div>
-    <img src="Presentacion/imagenes/slinder3.png" style="width:122%;height: 480%">
-  </div>
-
-  <div class="mySlides">
-    <div class="numbertext">5 / 6</div>
-    <img src="Presentacion/imagenes/slinder4.png" style="width:122%;height: 480%" >
-  </div>
-    
-  <div class="mySlides">
-    <div class="numbertext">6 / 6</div>
-    <img src="Presentacion/imagenes/cuy.jpg" style="width:130%;height: 480%" >
-  </div>
-    
-    <a class="prev" style="color: white;position: absolute; margin: -28% 5%;"   onclick="plusSlides(-1)">❮</a>
-  <a class="next" style="color: white; position: absolute; margin: -28% -20%;"  onclick="plusSlides(1)">❯</a>
-
-  <div class="caption-container">
-    <p id="caption"></p>
-  </div>
-
-  <div class=" container-fluid row">
-    <div class="column">
-        <img class="demo cursor " src="Presentacion/imagenes/slinder5.png" style="width:100%" onclick="currentSlide(1)" alt="FRITO">
+<br>
+<div id="demo" class="carousel slide" data-ride="carousel">
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+    <li data-target="#demo" data-slide-to="3"></li>
+    <li data-target="#demo" data-slide-to="4"></li>
+    <li data-target="#demo" data-slide-to="5"></li>
+  </ul>
+    <div class="carousel-inner" >
+     
+    <div class="carousel-item active">
+      <img src="Presentacion/imagenes/slinder5.png" alt="Los Angeles" width="100%" height="500">
+      <div class="carousel-caption">
+        <h3>POLLO A LA BROSTER  </h3>
+        <p>las  mejores bandejas estan en el restaurante.</p>
+      </div>   
     </div>
-    <div class="column">
-        <img class="demo cursor" src="Presentacion/imagenes/slinder1.png" style="width:100%" onclick="currentSlide(2)" alt="ENSALADA DE FRUTAS">
+    <div class="carousel-item">
+        <img src="Presentacion/imagenes/slinder1.png" alt="Chicago" width="100%" height="500">
+      <div class="carousel-caption">
+        <h3>ENSALADAS</h3>
+        <p>Los mejores sabores en tus ensaladas.</p>
+      </div>   
     </div>
-    <div class="column">
-        <img class="demo cursor" src="Presentacion/imagenes/slinder2.png" style="width:100%" onclick="currentSlide(3)" alt="BANDEJA PAISA">
+    <div class="carousel-item">
+        <img src="Presentacion/imagenes/slinder2.png" alt="New York" width="100%" height="500">
+      <div class="carousel-caption">
+        <h3>BANDEJA PAISA</h3>
+        <p>Un solo plato, Muchos sabores.</p>
+      </div>   
     </div>
-    <div class="column">
-        <img class="demo cursor" src="Presentacion/imagenes/slinder3.png" style="width:100%" onclick="currentSlide(4)" alt="SALON DE EVENTOS">
+    <div class="carousel-item">
+        <img src="Presentacion/imagenes/slinder3.png" alt="New York" width="100%" height="500">
+      <div class="carousel-caption">
+        <h3>EVENTOS</h3>
+        <p>We love the Big Apple!</p>
+      </div>   
     </div>
-    <div class="column">
-        <img class="demo cursor" src="Presentacion/imagenes/slinder4.png" style="width:100%" onclick="currentSlide(5)" alt="BANDEJAS">
-    </div>    
-    <div class="column">
-        <img class="demo cursor" src="Presentacion/imagenes/cuy.jpg" style="width:60%; height: 77.8%"  onclick="currentSlide(6)" alt="LA CASITA DEL CUY">
+    <div class="carousel-item">
+        <img src="Presentacion/imagenes/slinder4.png" alt="New York" width="100%" height="500">
+      <div class="carousel-caption">
+        <h3>COSTILLA AHUMADA</h3>
+        <p>los platos son mejores con costilla.</p>
+      </div>   
+    </div>
+    <div class="carousel-item">
+        <img src="Presentacion/imagenes/cuy.jpg" alt="New York" width="100%" height="500">
+      <div class="carousel-caption">
+        <h3>LA CASITA DEL CUY</h3>
+        <p>Restaurante de los mejores platos</p>
+      </div>   
     </div>
   </div>
+  <a class="carousel-control-prev " href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon btn-primary"></span>
+  </a>
+  <a class="carousel-control-next " href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon btn-primary"></span>
+  </a>
 </div>
-<br><br><br><br><br><br>
-<br><br><br><br><br><br>
-<br><br><br><br><br><br>
-<br><br><br><br><br><br>
-<br><br><br><br><br><br>
+
+
+
+
 <h2 class="text-center" style="font-weight: bold;">PLATOS A LA CARTA</h2>
 
 
 
-</div>
+
     <div class="container-fluid">
 <div class="container-fluid "  style="max-height: 800px; min-width: 100px;  overflow-y: auto;">
    <?=$lista?>

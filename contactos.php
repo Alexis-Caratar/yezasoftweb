@@ -12,7 +12,7 @@ $list="";
 
 $cadenaSQL="select*from empresa";
 $datos= ConectorBD::ejecutarQuery($cadenaSQL, null);
-$foto="<img  src='{$datos[0][9]}' width='500' height='400' style='position:absolute; margin:-2% 50%  ';  >";
+$foto="<img  alt='Responsive image'  src='{$datos[0][9]}' width='500' height='400' style='position:absolute; margin:-2% 50%  ';  >";
 ?>
 
 <br><br>

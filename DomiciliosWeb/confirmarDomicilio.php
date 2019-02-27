@@ -138,7 +138,8 @@ if($accion=='Adicionar'){
 <br>
 <div class="container " >
     <div class="row container-fluid">
-        <div class="col-md-5">
+        <div class="col-md-5"><br>
+            <center><h2 class="text-center" style="font-weight: bold; font-size: 50px;"><?= strtoupper($accion) ?> DOMICILIO </h2></center>
 <article>
    
         <form method="post"><br>
@@ -153,7 +154,7 @@ if($accion=='Adicionar'){
             <form name="formulario" method="POST" action="index.php?CONTENIDO=DomiciliosWeb/DomiciliosActualizar.php&IDENTIFICACION=<?=$cliente->getIdentificacion()?>" enctype="multipart/form-data">
                 <input type="hidden" name="datos" value="<?= $datos ?>"/>
                     <TABLE ><?=$registrar ?></TABLE>
-                    <table>
+                    <table class="table">
                             <tr><th><br>Direccion (*) </th><th><br><input class="form-control" type="text" name="direccion"  value='<?= $domicilio->getDireccion() ?>'></th></tr> 
                             <tr><th>Barrio</th><th><input type="text" name="barrio" class="form-control" value='<?= $domicilio->getBarrio() ?>'></th></tr> 
                             <tr><th>Fecha Domicilio (*)</th><th><input class="form-control" type="date" name="fechadomicilio" value="<?= $domicilio->getFechadomicilio() ?>" placeholder="ingrese una descripcion" required/></th></tr>

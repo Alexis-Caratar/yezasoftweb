@@ -8,10 +8,8 @@
 
 $sesiones=$_SESSION['rol'];
 if ($sesiones=="cocina") {
-    header("location:PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php&salir");
-    
+    header("location:PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php&salir");   
 }
-
 ?>
 <div class="container text-center">
     <br>

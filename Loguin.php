@@ -58,14 +58,9 @@ else
                             </tr>
                         </table>
                             </center>
-                         
                         <center>
-                            
-
                             <input class=" btn btn-primary"   type="submit" value="Ingresar">
-
                         </center>
-
                     </div>
                 </form>  
             </div>

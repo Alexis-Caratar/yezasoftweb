@@ -18,6 +18,7 @@ foreach ($_GET as $Variable=> $Valor) ${$Variable}=$Valor;
 foreach ($_POST as $Variable=> $Valor) ${$Variable}=$Valor;
 
 //esta es para la hora automatica del sistema
+date_default_timezone_set("America/Bogota");
 $horaactual= getdate();
 $horayfecha=$horaactual['year'].'-'. 0 .$horaactual['mon'].'-'.$horaactual['mday'].' '.$horaactual['hours'].':'.$horaactual['minutes'].':'.$horaactual['seconds'];
 

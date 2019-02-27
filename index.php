@@ -47,6 +47,7 @@ $datos12= ConectorBD::ejecutarQuery($cadena, null);
             body{
                 background-color: #ffffcc;
             }
+           
         </style>
     </head>
     <body >
@@ -99,21 +100,22 @@ $datos12= ConectorBD::ejecutarQuery($cadena, null);
 
 
         
-        <div class="table-responsive-lg container-fluid"><br>
+        <div class="tab-content"><br>
         <footer style="background-color: #057E94;color: white; font-family: arial; font-size: 30px; "><br>
             
             <div class="row container-fluid">
                 <div class="col-md-7">
                     <H1 style="font-weight: bold;">CONTACTO</H1>
-                     <li class=""><span class="icon-spoon-knife"></span> <?=$datos12[0][1]?></li>
-                     <li><span class="icon-users"></span><?=$datos12[0][2]?></li>
-                     <li class=""><span class="icon-compass2"></span><?=$datos12[0][3]?></li>
-                     <li class=""><span class="icon-compass2"></span> Direccion: <?=$datos12[0][4]?></li>
-                     <li ><span class="icon-compass2"></span> Ciudad: <?=$datos12[0][5]?></li>
-                     <li > <span class="icon-phone"></span><?=$datos12[0][6]?></li>
-                     <li ><span class="icon-phone"></span><?=$datos12[0][7]?></li>
-                     <li ><span class="icon-address-book"></span><?=$datos12[0][8]?></li>
-                    
+                    <div class="container-fluid">
+                     <li class="table-responsive"><span class="icon-spoon-knife"></span> <?=$datos12[0][1]?></li>
+                     <li class="table-responsive"><span class="icon-users"></span><?=$datos12[0][2]?></li>
+                     <li class="table-responsive"><span class="icon-compass2"></span><?=$datos12[0][3]?></li>
+                     <li class="table-responsive"><span class="icon-compass2"></span> Direccion: <?=$datos12[0][4]?></li>
+                     <li class="table-responsive" ><span class="icon-compass2"></span> Ciudad: <?=$datos12[0][5]?></li>
+                     <li class="table-responsive"> <span class="icon-phone"></span><?=$datos12[0][6]?></li>
+                     <li class="table-responsive" ><span class="icon-phone"></span><?=$datos12[0][7]?></li>
+                     <li class="table-responsive"><span class="icon-address-book"></span><?=$datos12[0][8]?></li>
+                    </div>
             <br><br>
             <h2>REDES SOCALES</h2>
             <li>
@@ -145,7 +147,6 @@ $datos12= ConectorBD::ejecutarQuery($cadena, null);
             
             <br>
             <h5 class="form-control"></h5>
-            <img class="col-3" src="Presentacion/imagenes/cuy.jpg" width="80" height="100" style="border-radius: 500%;"><br>
             <h6 class="text-right">Copyright 2018 @yezasoft. Todos los derechos reservados.</h6>
         </footer>
   </div>     

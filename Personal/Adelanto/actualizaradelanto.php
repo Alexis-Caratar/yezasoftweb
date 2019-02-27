@@ -14,7 +14,7 @@ require_once dirname(__FILE__).'/../../Clases/ConectorBD.php';
 foreach ($_GET as $Variable=> $Valor) ${$Variable}=$Valor;
 foreach ($_POST as $Variable=> $Valor) ${$Variable}=$Valor;
 
-
+date_default_timezone_set("America/Bogota");
 $horaactual= getdate();
 $horayfecha=$horaactual['year'].'-'. 0 .$horaactual['mon'].'-'.$horaactual['mday'].' '.$horaactual['hours'].':'.$horaactual['minutes'].':'.$horaactual['seconds'];
 print_r($horayfecha);

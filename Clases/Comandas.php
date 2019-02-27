@@ -118,6 +118,7 @@ class Comandas {
         $cadenaSQL="select * from comanda";
         if($filtro!=null)$cadenaSQL.=" where $filtro";
         if($orden!=null) $cadenaSQL.=" order by $orden";
+print_r($cadenaSQL);
 return ConectorBD::ejecutarQuery($cadenaSQL, null);
     }
     public static function getDatosEnObjeto($filtro, $orden){
