@@ -7,6 +7,7 @@
 require_once dirname(__FILE__) . "./Clases/ConectorBD.php";
 foreach ($_GET as $Variable => $valor)${$Variable} = $valor;
 foreach ($_POST as $Variable => $valor) ${$Variable} = $valor;
+
 session_start();
 $usuario = $_SESSION['user'];
 $_SESSION['rol'];
@@ -18,7 +19,7 @@ $menu = "";
 
  if (isset($_GET['acciones'])) {$acciones=$_GET['acciones'];} else {$acciones="abrir";}
 
-    if ($_SESSION['rol'] == 'admin') { //Administrador
+    if ($_SESSION['rolesi'] == 'admin') { //Administrador
         $menu .= '<div class = "menu">
         <div id = "cssmenu">
             <ul>
@@ -53,7 +54,7 @@ $menu = "";
         </div>
         </div>';
     }
-    if ($_SESSION['rol']=='cajero'&&$acciones=='abrir') {//cajero al inicio de sesion
+    if ($_SESSION['rolesi']=='cajero'&&$acciones=='abrir') {//cajero al inicio de sesion
         $today = getdate();
         date_default_timezone_set("America/Bogota");
         $menu .= '
@@ -81,7 +82,7 @@ $menu = "";
           </div> 
           </div>';
     }
-    if($_SESSION['rol'] == 'cocina') { //cocina
+    if($_SESSION['rolesi'] == 'cocina') { //cocina
         $menu .= '
         <table>
             <div id="cssmenu">  

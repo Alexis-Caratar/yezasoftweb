@@ -65,7 +65,7 @@ if (count($datos1)>0){
     $contador+=$contador;
     }
 }else{
-    $listaprestamos="<tr><td><h4>No tiene Adelantos<h4></td></tr>";
+    $listaprestamos="<tr><td><h4>No tiene Prestamos<h4></td></tr>";
     
 }
 

@@ -15,7 +15,7 @@ foreach ($_GET as $Variable=> $Valor) ${$Variable}=$Valor;
 $lista='';
 $numero=1;
 $datos= Adelanto::getDatosObjetos("idempleado=$identificacion", null);
-print_r($datos);
+
 if (count($datos)>0){
     
 

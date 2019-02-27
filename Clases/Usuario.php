@@ -25,7 +25,6 @@ class Usuario {
             if(is_array($campo)) $this->getObjetosDeVector ($campo);
             else{
                 $cadenaSQL=" select * from usuario where $campo=$valor";
-                
                 $resultado= ConectorBD::ejecutarQuery($cadenaSQL, null);
                 if(count($resultado)>0) $this->getObjetosDeVector ($resultado[0]);
             }
@@ -39,6 +38,8 @@ class Usuario {
     $this->clave=$vector[1];
     $this->id=$vector[2];
     $this->rol=$vector[3];
+    print_r($this->rol);
+    print_r($this->id);
     }
     function getRol() {
         return $this->rol;

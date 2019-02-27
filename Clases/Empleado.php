@@ -31,7 +31,7 @@ class Empleado {
             if (is_array($campo)) $this->cargarObjetoEnVector ($campo);//pregunta es arreglo por verdadero llama al cargar vector
             else {//por falso carga una consulta en la base de datos
                 $cadenaSQL="select identificacion, nombres, apellidos, genero, telefono, fechanacimiento,email,fechaingreso, fechafin, cargo from empleado where $campo=$valor";
-                print_r($cadenaSQL);
+               
                 $resultado= ConectorBD::ejecutarQuery($cadenaSQL, null);//llega como nulo por que estmos con la base de datos admin
                 if(count($resultado)>0) $this->cargarObjetoEnVector ($resultado[0]);//debuelve el primero 
                 //conut cuenta cuantas filas tiene el elemento

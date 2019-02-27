@@ -9,7 +9,6 @@ require_once dirname(__FILE__) . '/../Clases/Reservas.php';
 require_once dirname(__FILE__) . '/../Clases/Evento.php';
 
 
-print_r($_SESSION['identificacion']);
 
 $filtro = null;
 $AFecha = '';
