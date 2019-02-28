@@ -13,37 +13,6 @@ $menu="";
 $mennsajecomanda="";
  $filtro="";
  
-$filtro = null;
-$AFecha = '';
-$VFechaInicio = '';
-$VFechaFin = '';
-if (isset($_POST['AFecha'])) {
-    if ($filtro != null)
-        $filtro .= ' and ';
-    $filtro .= "fechasistema between '{$_POST['BFechaInicio']}' and '{$_POST['BFechaFin']}' ";
-    $VFechaInicio = $_POST['BFechaInicio'];
-    $VFechaFin = $_POST['BFechaFin'];
-    $AFecha = 'checked';
-
-    if ($VFechaInicio == '' && $VFechaFin == '') {
-        $filtro = null;
-    }
-}
-$AFechas = '';
-$VFechaInicios = '';
-$VFechaFins = '';
-if (isset($_POST['AFechas'])) {
-    if ($filtro != null)
-        $filtro .= ' and ';
-    $filtro .= "fechadomicilio between '{$_POST['BFechaInicios']}' and '{$_POST['BFechaFins']}' ";
-    $VFechaInicios = $_POST['BFechaInicios'];
-    $VFechaFins = $_POST['BFechaFins'];
-    $AFechas = 'checked';
-
-    if ($VFechaInicios == '' && $VFechaFins == '') {
-        $filtro = null;
-    }
-}
 
 
 ;
@@ -84,10 +53,10 @@ if (count($datos)>0){
 for ($i = 0; $i < count($datos); $i++) {
     //crear nueva variable
     $datosComanda=$datos[$i];
-    if ($datosComanda->getEstado()!='L' || $_SESSION['rol']=='admin' || $_SESSION['rol']=='cajero' ) {
+    if ($datosComanda->getEstado()!='L' || $_SESSION['rolesi']=='admin' || $_SESSION['rolsi']=='cajero' ) {
         //si el pedido esta en el estado =Listo no permite ingresar o si el rol es andministrador el listado listo deja ingresar
         
-         if ($_SESSION['rol']=='admin'&&$_SESSION['rol']=='cajero') {//si es administrador permite ver modificar
+         if ($_SESSION['rolesi']=='admin') {//si es administrador permite ver modificar
     $modificar="<form method='post' action='PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comandaListaPlato.php'>
                 <input type='hidden' name='idcomanda' value='{$datosComanda->getIdcomanda()}'>                
                 <input type='hidden' name='accion' value='Adicionar'>                
@@ -95,18 +64,19 @@ for ($i = 0; $i < count($datos); $i++) {
                 </form>
                 <img src='Presentacion/imagenes/Eliminar.png' title='Eliminar' onclick='Eliminar(".$datosComanda->getIdcomanda().")'></td>";
              $Adicionar= '<th><button title="Adicionar"><img src="Presentacion/imagenes/Adicionar.png"  ></button></th>';
-                 
-//}elseif($_SESSION['rol']=='cajero'){
-//        $modificar="<form method='post' action='PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comandaListaPlato.php'>
-//                <input type='hidden' name='idcomanda' value='{$datosComanda->getIdcomanda()}'>                
-//                <input type='hidden' name='accion' value='Adicionar'>                
-//                <td><button  title='Modificar'><img src='Presentacion/imagenes/Modificar.png'></button>
-//        </form><img src='Presentacion/imagenes/Eliminar.png' title='Eliminar' onclick='Eliminar(".$datosComanda->getIdcomanda().")'></td>";
-//  $Adicionar= '<button title="Adicionar"><img src="Presentacion/imagenes/Adicionar.png"  ></button></th>';
-//                
-//                } 
+                
          }        
-elseif ($_SESSION['rol']=='cocina') {
+         if ($_SESSION['rolesi']=='cajero') {//si es administrador permite ver modificar
+    $modificar="<form method='post' action='PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comandaListaPlato.php&acciones=cerrar&roles=cajero'>
+                <input type='hidden' name='idcomanda' value='{$datosComanda->getIdcomanda()}'>                
+                <input type='hidden' name='accion' value='Adicionar'>                
+                <td><button  title='Modificar'><img src='Presentacion/imagenes/Modificar.png'></button>
+                </form>
+                <img src='Presentacion/imagenes/Eliminar.png' title='Eliminar' onclick='Eliminarcaje(".$datosComanda->getIdcomanda().")'></td>";
+             $Adicionar= '<th><button title="Adicionar"><img src="Presentacion/imagenes/Adicionar.png"  ></button></th>';
+                
+         }        
+elseif ($_SESSION['rolesi']=='cocina') {
 
 
 //si es rol cocina permite cambiar el estado visto en cocina
@@ -134,6 +104,7 @@ elseif ($_SESSION['rol']=='cocina') {
     </div>';
     
 }
+
     $listadoComanda.="<tr>";
     $listadoComanda.="<td>".($i+1)."</td>";
     $listadoComanda.="<td>{$datosComanda->getEmpleado()}</td>";
@@ -151,7 +122,7 @@ elseif ($_SESSION['rol']=='cocina') {
         $eliminar="";
         $modificar="";
         $estados="ENTREGADA";
-         $modificar.="<td><button title='Crear Factura' onclick='print({$datosComanda->getIdcomanda()})'><img src='Presentacion/imagenes/bill.png'  ></button><td>";
+        $modificar.="<td><button title='Crear Factura' onclick='print({$datosComanda->getIdcomanda()})'><img src='Presentacion/imagenes/bill.png'  ></button><td>";
     }elseif($estado=='PG'){
         $color="style='background-color: #2E9AFE'";
         $eliminar="";
@@ -172,9 +143,14 @@ elseif ($_SESSION['rol']=='cocina') {
         
     }
     }
+              
 } else {
     $listadoComanda.="<td class='text-primary'>No se encontraron resultado para su criterio de busqueda. </td>";
+$Adicionar= '<th><button title="Adicionar"><img src="Presentacion/imagenes/Adicionar.png"  >  </button></th>';
+ 
+    
 }
+   
 ?>
 
    <div class="offset-8 col-md-4  "style="z-index: 100;  margin: 0% 65%; position: absolute;background: #333333;">
@@ -187,64 +163,7 @@ elseif ($_SESSION['rol']=='cocina') {
        </table>
  </form>
   <a style='cursor: pointer;color: white;' onClick="muestra_oculta('contenido1')" title="BUSQUEDA AVANZADA" class="btn-dark offset-5"><img src="presentacion/imagenes/lista.png"width="20" height="15"> Busqueda Avanzada </a>
-  
- <!--busqueda avanzada-->
 
-<div class="contenido1" id="contenido1">
-    <form method="post">
-        <div id="ColosTitulos">
-            <center>
-                <table class="table-hover"style="color:white; ">
-                <tr>
-                    <td><h6><input type="checkbox" id="check" name="AFecha" <?= $AFecha ?>class="input-group"><label for='check'>Registro</label></h6></td>   
-                </tr>
-                <tr>
-                    <td>
-                        <div class="input-group-text">
-                            <span class="input-group-text">inicio(*)</span>   
-                        <input type="date" name="BFechaInicio" value="<?= $VFechaInicio ?>" class="form-control"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="input-group-text">
-                        <span class="input-group-text">fin(*)</span><input type="date" name="BFechaFin" value="<?= $VFechaFin ?> "class="form-control"></div>
-                    </td>
-                </tr>
-                <tr>
-                <td><h6><input type="checkbox" id="check2" name="AFechas" <?= $AFechas ?>class="input-group"><label for='check2'>Reserva</label></h6></td>
-                </tr>
-                <tr> 
-                    <td>
-                        <div class="input-group-text">
-                            <span class="input-group-text">inicio(*)</span><input type="date" name="BFechaInicios" value="<?= $VFechaInicios ?>"class="form-control"></div>
-                    </td>
-                </tr>
-                <tr>
-                        <td>
-                            <div class="input-group-text">
-                            <span class="input-group-text">fin(*)</span><input type="date" name="BFechaFins" value="<?= $VFechaFins ?>"class="form-control"></div>
-                        </td>
-                     </tr>
-                     <tr>
-                     <table>
-                         <tr>
-                            
-                         <td>
-                         <th>
-                             <div class="col-md-4 col-md-offset-4">
-                                 <a class="btn-primary" href='#' onClick="document.forms[0].action = '';document.forms[0].submit();">BUSCAR</a>
-                    </div>
-                         </th>
-                         </td>
-                         </tr>
-                     </table>
-                         </tr>
-                </table>
-             </form>
-</div>
-</div> 
-  
  </div>
 <br>
     
@@ -270,13 +189,15 @@ elseif ($_SESSION['rol']=='cocina') {
     </table>
 <?=$mennsajecomanda?>
 </div>
-        
-
-
 <script type="text/javascript">
     function Eliminar(id){
        if(confirm('Desea eliinar esta comanda')){
            location='PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comandaActualizar.php&accion=Eliminar&id='+id;      
+        }
+    }
+    function Eliminarcaje(id){
+       if(confirm('Desea eliinar esta comanda')){
+           location='PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comandaActualizar.php&accion=Eliminar&id='+id+"&acciones=cerrar&roles=cajero";      
         }
     }
     function print(id){

@@ -7,7 +7,7 @@
  */
 
 $sesiones=$_SESSION['rol'];
-$role=$_SESSION['roles'];
+
 $user=$_SESSION['user'];
 if ($sesiones=="cocina") {
     header("location:PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php&salir");   

@@ -32,6 +32,8 @@ switch ($accion){
         $comanda->eliminar();
         break;
 }
-header('location: PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php');
+$filtro="";
+if ($acciones=='cerrar')$filtro="&acciones=cerrar&roles=cajero";
+header('location: PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php'.$filtro.'');
 ?>
 

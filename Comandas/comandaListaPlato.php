@@ -15,7 +15,7 @@ require_once dirname(__FILE__).'/../Clases/DetalleOrdenes.php';
 
 $idcomanda='';
 $iddetalle='';
-$total='';
+$total=0;
 $compara ='';
 $accion ='Adicionar';
 $modplato='';
@@ -32,9 +32,9 @@ foreach ($_GET as $variable => $valor) ${$variable}=$valor;
 foreach ($_POST as $variable => $valor) ${$variable}=$valor;
 
 //si la variable vista llega desde comanda como verdadera cambie estado avista por cocina 
-if ($vista=='true' && $_SESSION['rol']=='cocina') {
+if ($vista=='true' && $_SESSION['rolesi']=='cocina') {
     ConectorBD::ejecutarQuery("update comanda set estado='V' where idcomanda=$idcomanda ", null);    
-}elseif ($listo=='true' && $_SESSION['rol']=='cocina') {///si listo llega como verdadero nos permite cambiar el estado de vista a lista
+}elseif ($listo=='true' && $_SESSION['rolesi']=='cocina') {///si listo llega como verdadero nos permite cambiar el estado de vista a lista
     ConectorBD::ejecutarQuery("update comanda set estado='L' where idcomanda=$idcomanda ", null);
     header('location: PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php');
 }
@@ -72,7 +72,7 @@ for ($i = 0; $i < count($datos); $i++) {
     $lista.="<td>{$datostabla->getPlato()}</td>";
     $lista.="<td>{$datostabla->getCantidad()}</td>";
      $lista.="<td>{$datostabla->getNota()}</td>";
-    if ($_SESSION['rol']=='admin') {//si el rol es admin permite completar le lista con  los modificar e ilini¡minar personal cocina no permite ingreso a esta secion 
+    if ($_SESSION['rolesi']=='admin') {//si el rol es admin permite completar le lista con  los modificar e ilini¡minar personal cocina no permite ingreso a esta secion 
     $lista.="<td>{$datostabla->getVrunitario()}</td>";
     $totales=$datostabla->getVrunitario()*$datostabla->getCantidad();
     $lista.="<td>{$total}</td>";    
@@ -97,7 +97,7 @@ for ($i = 0; $i < count($datos); $i++) {
 
     <?php 
     //filtrar si es cocina lo que debe ver en interfaz cocina
-if ($_SESSION['rol']=='cocina') {?>   
+if ($_SESSION['rolesi']=='cocina') {?>   
     <br>
 <div class="container-fluid ">
 <div class="text-left">
@@ -128,14 +128,18 @@ if ($_SESSION['rol']=='cocina') {?>
 <?php }
 ?>
     <?php 
-if ($_SESSION['rol']=='admin') {//administrador puede ver todo?>
+if ($_SESSION['rolesi']=='admin'||$_SESSION['rolesi']=='cajero') {
+ $filtro="";
+if ($acciones=='cerrar')$filtro="&acciones=cerrar&roles=cajero";
+
+//administrador puede ver todo?>
     <center><h2><?= strtoupper($accion) ?> PLATOS</h2></center>
 
     <div class="container-fluid row">  
  
      <div class="col-4">
         
-         <form name="comandaFormulario" method="POST" action="PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comandaPlatoActualizar.php">
+         <form name="comandaFormulario" method="POST" action="PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comandaPlatoActualizar.php<?=$filtro?>">
 
              <table class="container">
                  <tr><th>Menu</th><th><select name="menu" onchange="cargar(this.value)"><?= Menus::listaOpcciones(NULL) ?></select></th></tr>

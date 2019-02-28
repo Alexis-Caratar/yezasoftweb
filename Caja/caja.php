@@ -13,10 +13,10 @@ foreach ($_POST as $variable => $valor) ${$variable}=$valor;
 foreach ($_GET as $variable=> $valor) ${$variable}=$valor;
 
 $usuario=$_SESSION['user'];
-$rol=$_SESSION['rol'];
+$rol=$_SESSION['roles'];
 
         ConectorBD::ejecutarQuery("insert into caja(fecha,base,usuariocaja) values(now(), $base, '$usuario')", null);
-        header('Location: PrincipalAdmin.php?CONTENIDOADMIN=inicioAdmin.php&acciones=cerrar&roles='.$rol);
+        header('Location: PrincipalAdmin.php?CONTENIDOADMIN=inicioAdmin.php&acciones=cerrar&rolesi='.$rol);
     
   ?>
 
