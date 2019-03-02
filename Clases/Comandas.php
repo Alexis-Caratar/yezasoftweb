@@ -75,6 +75,17 @@ class Comandas {
     }
 
     function getEstado() {
+    if ($this->estado=='P') {
+        $this->estado='PENDIENTE';
+    }elseif ($this->estado=='V') {//para que en la interfaz complete segun el estado
+        $this->estado='VISTA EN COCINA';
+    }elseif ($this->estado=='L') {
+         $this->estado='LISTO EN COCINA';
+    }elseif($this->estado=='E'){
+         $this->estado=="ENTREGADA";
+          }elseif($this->estado=='PG'){
+       $this->estado="PAGADO";
+    }   
         return $this->estado;
     }
 
@@ -118,7 +129,6 @@ class Comandas {
         $cadenaSQL="select * from comanda";
         if($filtro!=null)$cadenaSQL.=" where $filtro";
         if($orden!=null) $cadenaSQL.=" order by $orden";
-print_r($cadenaSQL);
 return ConectorBD::ejecutarQuery($cadenaSQL, null);
     }
     public static function getDatosEnObjeto($filtro, $orden){

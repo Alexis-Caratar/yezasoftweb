@@ -24,7 +24,7 @@ if($accion=='Eliminar'){
     $cadena="delete from caja  where idcaja=$idcaja";
     print_r($cadena);     
     ConectorBD::ejecutarQuery($cadena,null);
-        //header("location:PrincipalAdmin.php?CONTENIDOADMIN=Comandas/caja.php");
+       header("location:PrincipalAdmin.php?CONTENIDOADMIN=Comandas/caja.php");
 }
 
 

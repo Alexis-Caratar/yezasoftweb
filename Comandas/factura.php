@@ -76,7 +76,7 @@ $cadenaq=ConectorBD::ejecutarQuery("select factura, fecha from comanda where idc
         </tr>
         
         <tr>
-            <th>N°</th><th>Nombre</th><th>obserbacion</th><th>Cantidad</th><th>Valor</th><th>Subtotal</th>
+            <th>N°</th><th>Nombre</th><th>Cantidad</th><th>Observacion</th><th>Valor</th><th>Subtotal</th>
             
               </tr>
         <?=$lista?>

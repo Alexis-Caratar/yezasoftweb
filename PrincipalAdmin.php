@@ -10,6 +10,9 @@ foreach ($_POST as $Variable => $valor) ${$Variable} = $valor;
 
 session_start();
 $usuario = $_SESSION['user'];
+date_default_timezone_set("America/Bogota");
+
+
 $_SESSION['rol'];
 $_SESSION['accion'];
 $fechaingreso = ConectorBD::ejecutarQuery("SELECT fecha FROM caja where usuariocaja='$usuario' order by  fecha desc limit 1 ", null);
@@ -20,7 +23,7 @@ $menu = "";
  if (isset($_GET['acciones'])) {$acciones=$_GET['acciones'];} else {$acciones="abrir";}
 
     if ($_SESSION['rolesi'] == 'admin') { //Administrador
-        $menu .= '<div class = "menu">
+        $menu = '<div class = "menu">
         <div id = "cssmenu">
             <ul>
             <li class = "active"><a href = "PrincipalAdmin.php?CONTENIDOADMIN=inicioAdmin.php"><span class = "icon-home"></span>INICIO</a></li>
@@ -54,36 +57,20 @@ $menu = "";
         </div>
         </div>';
     }
-    if ($_SESSION['rolesi']=='cajero'&&$acciones=='abrir') {//cajero al inicio de sesion
-        $today = getdate();
-        date_default_timezone_set("America/Bogota");
-        $menu .= '
-         <div class="container">
-         <H2 class="text-center" >ABRIR CAJA</H2><br>
-         <div class="row">
-            <div class=" col-5">
-             <form method = "post" action = "principalAdmin.php?CONTENIDOADMIN=Caja/caja.php">
-                 <table class="table table-hover">
-                     <tr>
-                          <h4> FECHA: ' . date("Y-m-d g:i:s A"). ' </h4>
-                         <h3> CAJERO: '.$_SESSION['rol']. ' </h3>
-                         <h3> IDENTIFICACION: '.$_SESSION['user']. ' </h3>
-                     </tr>
-                 </table> 
-                 </div>
-                 <div class=" col-5">
-                 <span>INGRESE BASE</span>
-                   <span><input class="form-control" type="number" name = "base"></span> 
-
-                             <input type="hidden" value="' . $_SESSION["user"] . ' name="usuario">
-                             <input  class="btn btn-primary form-control" type="submit" value="Abrir" >
-                 </div>    
-             </form>
-          </div> 
-          </div>';
+    if ($_SESSION['rolesi']=='cajero') {//cajero al inicio de sesion
+            $menu='<div id = "cssmenu">
+            <ul>
+                  <li><a href="principalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php"><span class="icon-stack"></span>COMANDA</a> </li>
+                   <li ><a href="PrincipalAdmin.php?CONTENIDOADMIN=ReservasAdmin/Reservas.php&"><span class="icon-list-numbered"></span>RESERVAS</a> </li>
+                   <li><a href="PrincipalAdmin.php?CONTENIDOADMIN=DomiciliosaAdmin/Domicilios.php"><span class="icon-cart"></span>DOMICILIOS</a></li>
+                   <li><a href="PrincipalAdmin.php?CONTENIDOADMIN=Comandas/gasto.php&idcaja='.$maximo.'"><span class="icon-cart"></span>GASTOS</a></li>
+                   <li><a onClick="salir('.$maximo.')";>Salir</a></li>
+             </ul>
+           </div>   ';
+        
     }
     if($_SESSION['rolesi'] == 'cocina') { //cocina
-        $menu .= '
+        $menu = '
         <table>
             <div id="cssmenu">  
                 <ul>
@@ -93,18 +80,10 @@ $menu = "";
                     </table>
             ';
     }
-    if ($acciones=='cerrar'&&$roles='cajero'){
-            //cajero despues de haber abierto caja 
-            $menu.='<div id = "cssmenu">
-            <ul>
-                  <li><a href="principalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php&acciones=cerrar"><span class="icon-stack"></span>COMANDA</a> </li>
-                   <li ><a href="PrincipalAdmin.php?CONTENIDOADMIN=ReservasAdmin/Reservas.php&acciones=cerrar"><span class="icon-list-numbered"></span>RESERVAS</a> </li>
-                   <li><a href="PrincipalAdmin.php?CONTENIDOADMIN=DomiciliosaAdmin/Domicilios.php&acciones=cerrar"><span class="icon-cart"></span>DOMICILIOS</a></li>
-                   <li><a href="PrincipalAdmin.php?CONTENIDOADMIN=Comandas/gasto.php&idcaja='.$maximo.'"><span class="icon-cart"></span>GASTOS</a></li>
-                   <li><a onClick="salir('.$maximo.')";>Salir</a></li>
-             </ul>
-           </div>   ';
-    }
+ 
+        
+           
+    
     
 
 ?>

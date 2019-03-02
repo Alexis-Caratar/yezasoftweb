@@ -21,6 +21,7 @@ if (Usuario::validar($usuario, $clave)) {
     $_SESSION['rolesi']=$usuariosd->getRol();
     $_SESSION['accion']='Abrir';
      
+ 
 header("Location: PrincipalAdmin.php?CONTENIDOADMIN=inicioAdmin.php");
     
 }else{

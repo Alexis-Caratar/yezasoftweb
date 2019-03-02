@@ -12,20 +12,20 @@ foreach ($_GET as $variable=>$valor) ${$variable}=$valor;
 $formulariolista="";
 if ($accion=='Modificar'){ $mesa=new Mesa('idmesa', $idmesa);
  
-$formulariolista.="<tr><th>Area </th><th><input type='text' name='area' value='{$mesa->getArea()}' required='' ></th></tr>";
-$formulariolista.="<tr><th>NUMERO DE MESA </th><th><input type='number' name='mesainicial' value='{$mesa->getMesainicial()}' required='' ></th></tr>";
+$formulariolista.="<tr><th>Area </th><th><input class='form-control' type='text' name='area' value='{$mesa->getArea()}' required='' ></th></tr>";
+$formulariolista.="<tr><th>NUMERO DE MESA </th><th><input  class='form-control'  maxlength='3' type='text' name='mesainicial' value='{$mesa->getMesainicial()}' required='' ></th></tr>";
 $formulariolista.="<tr><th>color</th><th><input type='color' name='color' value='{$mesa->getColor()}' required='' ></th></tr>";
-$formulariolista.="<tr><th>piso</th><th><input type='number' name='piso' value='{$mesa->getPiso()}' required='' placeholder='piso'></th></tr>";
+$formulariolista.="<tr><th>piso</th><th><input  class='form-control' type='number' name='piso' value='{$mesa->getPiso()}' required='' placeholder='piso'></th></tr>";
 
 
 } else {
     $mesa=new Mesa(null, null);
   
-    $formulariolista.='<tr><th>AREA</th><th><input  type="text" name="area"  required="" placeholder="ingrese el nombre de la area"></th></tr>
-        <tr><th>COLOR</th><th><input type="color" name="color" required="" placeholder="ingrese el color de la area"></th></tr>
-        <tr><th>NUMERO DE MESA INICIAL</th><th><input type="number" name="mesainicial"  required="" placeholder="ingrese el numero de mesa inicial"></th></tr>
-        <tr><th>NUMERO DE MESAS FINAL</th><th><input type="number" name="numeromesa" required="" placeholder="ingrese el numero de mesas "></th></tr>
-        <tr><th>NUMERO DE PISO</th><th><input type="number" name="piso" required="" placeholder="ingrese el piso"></th></tr>   
+    $formulariolista.='<tr><th>AREA</th><th><input class="form-control"   type="text" name="area"  required="" placeholder="ingrese el nombre de la area"></th></tr>
+        <tr><th>COLOR</th><th><input   type="color" name="color" required="" placeholder="ingrese el color de la area"></th></tr>
+        <tr><th>NUMERO DE MESA INICIAL</th><th><input  class="form-control" maxlength="3"  type="text" name="mesainicial"  required="" placeholder="ingrese el numero de mesa inicial"></th></tr>
+        <tr><th>NUMERO DE MESAS FINAL</th><th><input class="form-control" maxlength="3" type="number" name="numeromesa" required="" placeholder="ingrese el numero de mesas "></th></tr>
+        <tr><th>NUMERO DE PISO</th><th><input class="form-control"  type="number" name="piso" required="" placeholder="ingrese el piso"></th></tr>   
             ';
 }
 ?><br>

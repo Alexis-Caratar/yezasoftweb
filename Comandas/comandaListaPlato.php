@@ -129,32 +129,30 @@ if ($_SESSION['rolesi']=='cocina') {?>
 ?>
     <?php 
 if ($_SESSION['rolesi']=='admin'||$_SESSION['rolesi']=='cajero') {
- $filtro="";
-if ($acciones=='cerrar')$filtro="&acciones=cerrar&roles=cajero";
 
 //administrador puede ver todo?>
     <center><h2><?= strtoupper($accion) ?> PLATOS</h2></center>
 
     <div class="container-fluid row">  
  
-     <div class="col-4">
+     <div class="col-4 ">
         
-         <form name="comandaFormulario" method="POST" action="PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comandaPlatoActualizar.php<?=$filtro?>">
+         <form name="comandaFormulario" method="POST" action="PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comandaPlatoActualizar.php">
 
              <table class="container">
-                 <tr><th>Menu</th><th><select name="menu" onchange="cargar(this.value)"><?= Menus::listaOpcciones(NULL) ?></select></th></tr>
-                 <tr><th>plato</th><th><select name="plato" onchange="cargard(this.value)"><option>Lista de platos</option></select></th></tr>
-                 <tr><th>cantidad</th><th><input type="number" name="cantida" id="cantida" value="<?= $ca ?>" onkeyup="calcularvalor()"></th></tr>
-                 <tr><th>valor</th><th><input id="valor" type="number" name="val" value="<?= $vr ?>" onkeyup="calcularvalor()"></th></tr>
-                 <tr><th>subtotal</th><th><lavel id="subtotal" ></lavel></th></tr>
-                 <tr><th>observacion</th><th><textarea name="nota"><?= $nt ?></textarea></th></tr>
+                 <tr><th>Menu</th><th><select class="form-control" name="menu" onchange="cargar(this.value)"><?= Menus::listaOpcciones(NULL) ?></select></th></tr>
+                 <tr><th>plato</th><th><select class="form-control" name="plato" onchange="cargard(this.value)"><option>Lista de platos</option></select></th></tr>
+                 <tr><th>cantidad</th><th><input class="form-control" type="number" name="cantida" id="cantida" value="<?= $ca ?>" onkeyup="calcularvalor()"></th></tr>
+                 <tr><th>valor</th><th><input class="form-control" id="valor" type="number" name="val" value="<?= $vr ?>" onkeyup="calcularvalor()"></th></tr>
+                 <tr><th>subtotal</th><th><lavel class="form-control" id="subtotal" ></lavel></th></tr>
+                 <tr><th>observacion</th><th><textarea class="form-control" name="nota"><?= $nt ?></textarea></th></tr>
 
 
              </table>
 
              <input type="hidden" name="idcomanda" value="<?= $idcomanda ?>">
              <input type="hidden" name="iddetalle" value="<?= $iddetalle ?>">
-            <input class="btn-primary"type="submit" name="accion" value="<?= $accion ?>">
+            <input  class="btn btn-primary"type="submit" name="accion" value="<?= $accion ?>">
 
          </form>
      </div>
@@ -163,13 +161,13 @@ if ($acciones=='cerrar')$filtro="&acciones=cerrar&roles=cajero";
      <div class="col-8">
 
          <center>  <h4>LISTA DE PLATOS</h4></center>
-         <table class="tabla container" border="1">
+         <table class="tabla table-active table-bordered " >
     <thead  class="table-dark">
-                 <th>NUMERO</th><th>PLATO</th><th>OBSERVACION  </th><th>CANTIDAD</th><th>VALOR</th><th>SUBTOTAL</th>
+                 <th>NUMERO</th><th>PLATO</th><th>CANTIDAD  </th><th>OBSERVACION</th><th>VALOR</th><th>SUBTOTAL</th>
                  <th>
                  </th>
 
-             <button title='Crear Factura' onclick='print()'><img src='Presentacion/imagenes/bill.png'  ></button>
+                 <button  title='Crear Factura' onclick='print()'><img src='Presentacion/imagenes/bill.png'  ></button>
              <thead
              <?= $lista ?>
             
@@ -179,7 +177,7 @@ if ($acciones=='cerrar')$filtro="&acciones=cerrar&roles=cajero";
          </table>
 
          <br><br>
-         <input type="button" class="btn-primary" onclick="regresarguardar()" value="Guardar">  
+         <input class="btn btn-primary" type="button" class="btn-primary" onclick="regresarguardar()" value="Guardar">  
      </div>
     </div>
     

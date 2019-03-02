@@ -76,8 +76,8 @@ class Usuario {
         $this->id = $id;
     }
 
-        public function Modificaradministrador($usuario,$claveactual,$clavenueva){
-          $cadenaSQL="update usuario set clave='$clavenueva' where usuario='$usuario'";
+        public function Modificaradministrador($usuario,$claveactual,$clavenueva,$usuarionuevo){
+          $cadenaSQL="update usuario set usuario='$usuarionuevo', clave='$clavenueva' where usuario='$usuario'";
         ConectorBD::ejecutarQuery($cadenaSQL,null);        
     }
     

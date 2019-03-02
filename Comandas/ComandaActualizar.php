@@ -33,7 +33,7 @@ switch ($accion){
         break;
 }
 $filtro="";
-if ($acciones=='cerrar')$filtro="&acciones=cerrar&roles=cajero";
-header('location: PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php'.$filtro.'');
+
+header('location: PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php');
 ?>
 

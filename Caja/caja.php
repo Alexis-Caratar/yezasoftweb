@@ -11,12 +11,15 @@ require_once dirname(__FILE__)."/../Clases/Facturas.php";
 
 foreach ($_POST as $variable => $valor) ${$variable}=$valor;
 foreach ($_GET as $variable=> $valor) ${$variable}=$valor;
-
+$foo = "local variable";
+ echo $GLOBALS["foo"];
+ 
 $usuario=$_SESSION['user'];
 $rol=$_SESSION['roles'];
 
+
         ConectorBD::ejecutarQuery("insert into caja(fecha,base,usuariocaja) values(now(), $base, '$usuario')", null);
-        header('Location: PrincipalAdmin.php?CONTENIDOADMIN=inicioAdmin.php&acciones=cerrar&rolesi='.$rol);
+        header('Location: PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comanda.php');
     
   ?>
 

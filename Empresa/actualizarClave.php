@@ -20,7 +20,7 @@ else $usuario='';
 if (Usuario::validarclave($claveactual)){
     if ($clavenueva==$confirmarclave) {
         $usuarios=new Usuario(null, null);
-        $usuarios->Modificaradministrador($usuario,$claveactual,$clavenueva);
+        $usuarios->Modificaradministrador($usuario,$claveactual,$clavenueva,$usuarionuevo);
     } else {$mensaje="No concuerdan las contraseñas nuevas";
          header("Location:PrincipalAdmin.php?CONTENIDOADMIN=Empresa/cambioclaveadmin.php&mensaje=$mensaje&claveactual=$claveactual&clavenueva=$clavenueva&confirmarclave=$confirmarclave ") ;
     }

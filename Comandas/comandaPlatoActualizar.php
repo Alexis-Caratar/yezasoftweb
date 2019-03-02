@@ -59,7 +59,7 @@ switch ($accion){
         $detalle->setIddetalle($id);
         $detalle->eliminar();        
 }
-//header('Location:PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comandaListaPlato.php&idcomanda='.$idcomanda.'&acciones=cerrar&roles=cajero');
+header('Location:PrincipalAdmin.php?CONTENIDOADMIN=Comandas/comandaListaPlato.php&idcomanda='.$idcomanda.'');
         
 
 
